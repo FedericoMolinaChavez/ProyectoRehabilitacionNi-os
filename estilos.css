@@ -1,6 +1,9 @@
 header{background: #d3d3d3;}
 
 footer{background: #d3d3d3;}
-
+#form1 {background: #F0F0F0;
+		margin-top: 15%;}
 #uno {margin-bottom: 5%;
 		margin-top: 3%;}
+#tituloIngreso {margin-left: 4%;}
+#contenidoIngreso {margin-left: 8%;}
