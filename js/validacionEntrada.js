@@ -16,19 +16,37 @@ function validateForm()
 
 function myAjax()
 {
-	window.alert("entra aqui");
-	$.ajax
-	({
-		type: 'POST',
-		url : 'prueba.php',
-		data : {user : document.forms["myform"]["User"].value , Password: document.forms["myform"]["Password"].value},
-		dataType : 'json',
-		success: function(json)
-			{
-				print("ok");
-			}
-	});
 
-	window.alert(document.forms["myform"]["Password"].value);
+	var pet = "prueba.php";
+	var nom = document.forms["myform"]["Username"].value;
+	var pass = document.forms["myform"]["Password"].value;
+	$.ajax({
+		beforeSend: function()
+			{
+				alert(nom);
+			},
+		url: pet,
+		type: 'POST',
+		data: ("user= "+ nom +  "&password=" + pass),
+		success:function(html)
+			{
+				var respuesta = "respuesta"
+
+				if ((html.trim().localeCompare(respuesta)) == 0)
+					{
+						localStorage["key"] = pass;
+						location.href = "main.html";
+					}
+				//alert ((html.trim()));
+				
+				//alert(html.trim().localeCompare(respuesta));
+			},
+		always: function(html)
+			{
+				alert(html);
+			}
+
+	});
+	
 	
 }
