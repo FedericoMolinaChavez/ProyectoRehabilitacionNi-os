@@ -3,6 +3,8 @@ var nivel = 0;
 var numErrores = 0;
 var numeroIntentos = "";
 var numeroSlide = 1;
+var idact = 1;
+var idPaciente = 1018473835;
 function RegularNivel(resultado) //esta función se encarga de reducir el nivel de la actividad.
 	{
 		if (resultado == false)
@@ -10,7 +12,11 @@ function RegularNivel(resultado) //esta función se encarga de reducir el nivel 
 				if (numeroDeErrores == 3)
 					{
 						numeroDeErrores = 0;
-						nivel = nivel -1;
+						if (nivel != 0)
+							{
+								nivel = nivel -1;
+							}
+						
 					}
 				else
 					{
@@ -47,11 +53,17 @@ function Diapositiva1 (nivel, resultado) //Se encarga de realiazar la logica de 
 			{
 				numErrores = numErrores + 1;
 				RegularNivel(false);
+				if (nivel == 0)
+					{
+						document.getElementById("cosito").innerHTML = "oso";
+					}
 				return 1;
 			}
 	}
 function Diapositiva2 (nivel, resultado) //Se encarga de realiazar la logica de la actividad en cuestion.
 	{
+		//alert(nivel);
+		document.getElementById("cosito").innerHTML = "";
 		if (resultado == "gato")
 			{
 				numeroIntentos += numErrores + " ";
@@ -62,12 +74,17 @@ function Diapositiva2 (nivel, resultado) //Se encarga de realiazar la logica de 
 		else
 		{
 			numErrores = numErrores + 1;
-				RegularNivel(false);
+			RegularNivel(false);
+			if (nivel == 0)
+					{
+						document.getElementById("cosito").innerHTML = "gato";
+					}
 			return 2;
 		}
 	}
 function Diapositiva3 (nivel, resultado) //Se encarga de realiazar la logica de la actividad en cuestion.
 	{
+		document.getElementById("cosito").innerHTML = "";
 		if (resultado == "perro")
 			{
 				numeroIntentos += numErrores + " ";
@@ -78,12 +95,17 @@ function Diapositiva3 (nivel, resultado) //Se encarga de realiazar la logica de 
 		else 
 			{
 				numErrores = numErrores + 1;
-					RegularNivel(false);
+				RegularNivel(false);
+				if (nivel == 0)
+					{
+						document.getElementById("cosito").innerHTML = "perro";
+					}
 				return 3;
 			}
 	}
 function Diapositiva4 (nivel, resultado) //Se encarga de realiazar la logica de la actividad en cuestion.
 	{
+		document.getElementById("cosito").innerHTML = "";
 		if (resultado == "caballo")
 			{
 				numeroIntentos += numErrores + " ";
@@ -94,12 +116,17 @@ function Diapositiva4 (nivel, resultado) //Se encarga de realiazar la logica de 
 		else
 			{
 				numErrores = numErrores + 1;
+				if (nivel == 0)
+					{
+						document.getElementById("cosito").innerHTML = "caballo";
+					}
 				RegularNivel(false);
 				return 4
 			}
 	}
 function Diapositiva5 (nivel, resultado) //Se encarga de realiazar la logica de la actividad en cuestion.
 	{
+		document.getElementById("cosito").innerHTML = "";
 		if (resultado == "unicornio")
 			{
 				numeroIntentos += numErrores + " ";
@@ -111,6 +138,10 @@ function Diapositiva5 (nivel, resultado) //Se encarga de realiazar la logica de 
 			{
 				numErrores = numErrores + 1;
 				RegularNivel(false);
+				if (nivel == 0)
+					{
+						document.getElementById("cosito").innerHTML = "unicornio";
+					}
 				return 5;
 			}
 	}
@@ -126,12 +157,15 @@ function actividad (nivel) //funcion principal que se encarga de recorrer los di
 			if (numeroSlide == 1)
 			{
 				var resultado = document.getElementById('answer').value;
-				alert(resultado);
+				
 				numeroSlide = Diapositiva1 (nivel, resultado)
 				if (numeroSlide == 2)
 					{
 						document.getElementById('imagen').src = "Images/Actividad1/segunda.jpg";
+
 					}
+				return 0;
+
 			}
 			if (numeroSlide == 2)
 				{
@@ -141,6 +175,7 @@ function actividad (nivel) //funcion principal que se encarga de recorrer los di
 						{
 							document.getElementById('imagen').src = "Images/Actividad1/tercera.jpg";
 						}
+					return 0;
 				}
 			if (numeroSlide == 3)
 				{
@@ -150,6 +185,7 @@ function actividad (nivel) //funcion principal que se encarga de recorrer los di
 						{
 							document.getElementById('imagen').src = "Images/Actividad1/cuarta.jpg";
 						}
+					return 0;
 				}
 			if (numeroSlide == 4)
 				{
@@ -159,6 +195,7 @@ function actividad (nivel) //funcion principal que se encarga de recorrer los di
 						{
 							document.getElementById('imagen').src = "Images/Actividad1/quinta.png";
 						}
+					return 0;
 				}
 			if (numeroSlide == 5)
 				{
@@ -168,9 +205,40 @@ function actividad (nivel) //funcion principal que se encarga de recorrer los di
 					{
 						salida = false;
 						myAjax();
-					}				
+					}
+				return 0;				
 				}
 
 		
 		
+	}
+function myAjax()
+	{
+		var pet = "actividad.php";
+	
+	$.ajax({
+		beforeSend: function()
+			{
+				alert(pet);
+			},
+		url: pet,
+		type: 'POST',
+		data: ("nivel= "+ nivel +  "&numeroIntentos=" + numeroIntentos+ "&idActividad="+ idact + "&idPaciente=" + idPaciente),
+		success:function(html)
+			{
+						alert ((html.trim()));
+						localStorage["key"] = "success";
+						location.href = "main.html";
+					
+				
+				
+				//alert(html.trim().localeCompare(respuesta));
+			},
+		always: function(html)
+			{
+				alert(html);
+			}
+
+	});
+	
 	}
