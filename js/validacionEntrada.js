@@ -23,7 +23,7 @@ function myAjax()
 	$.ajax({
 		beforeSend: function()
 			{
-				alert(nom);
+				//alert(nom);
 			},
 		url: pet,
 		type: 'POST',
@@ -34,6 +34,7 @@ function myAjax()
 
 				if ((html.trim().localeCompare(respuesta)) == 0)
 					{
+						//alert(pass);
 						localStorage["key"] = pass;
 						location.href = "main.html";
 					}
@@ -43,7 +44,7 @@ function myAjax()
 			},
 		always: function(html)
 			{
-				alert(html);
+				//alert(html);
 			}
 
 	});

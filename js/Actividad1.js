@@ -1,10 +1,11 @@
 var numeroDeErrores = 0;
-var nivel = 0;
+var nivel = 1;
 var numErrores = 0;
 var numeroIntentos = "";
 var numeroSlide = 1;
 var idact = 1;
-var idPaciente = 1018473835;
+var idPaciente =0;
+//alert(idPaciente);
 function RegularNivel(resultado) //esta función se encarga de reducir el nivel de la actividad.
 	{
 		if (resultado == false)
@@ -148,6 +149,8 @@ function Diapositiva5 (nivel, resultado) //Se encarga de realiazar la logica de 
 
 function work()
 	{
+		document.getElementById('imagen').src = "Images/Actividad1/uno.jpg";
+		idPaciente = localStorage.getItem("key");
 		actividad (nivel)
 	}
 function actividad (nivel) //funcion principal que se encarga de recorrer los diferentes slides.
@@ -226,7 +229,7 @@ function myAjax()
 		data: ("nivel= "+ nivel +  "&numeroIntentos=" + numeroIntentos+ "&idActividad="+ idact + "&idPaciente=" + idPaciente),
 		success:function(html)
 			{
-						alert ((html.trim()));
+						//alert ((html.trim()));
 						localStorage["key"] = "success";
 						location.href = "main.html";
 					
