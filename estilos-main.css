@@ -1,9 +1,28 @@
-#navi	{
-	background: #E1DDDD;
+#header{
+	background-image: url(Images/colores.jpg); 
+	color: #fff;
 }
 
-#footer {background: #E1DDDD;}
+#navi{
+	background: #acc12f;
+}
+#guide {
+	background: #cdedf6;
+}
+#footer {
+	background: #f2f2f2;
+}
 
-#log-out { text-align: center; }
-#texto_actividad{text-align: center; }
-#fot{margin-top: 30px;}
+#log-out {
+	text-align: center;
+}
+#texto_actividad{
+	text-align: center; 
+}
+#fot{
+	margin-top: 30px;
+}
+#info{
+	background: #474647;
+	color: #E7EFC5;
+}
