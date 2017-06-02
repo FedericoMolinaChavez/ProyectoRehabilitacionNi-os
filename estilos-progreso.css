@@ -1,9 +1,14 @@
+#header{
+	background-image: url(Images/colores.jpg); 
+	color: #fff;
+}
+
 #navi	{
-	background: #E1DDDD;
+	background: #acc12f;
 }
 
 #log-out { text-align: center; }
 
-#footer {background: #E1DDDD;}
+#footer {background: #f2f2f2;}
 
 #containerUno {background: #12FCC2;}
