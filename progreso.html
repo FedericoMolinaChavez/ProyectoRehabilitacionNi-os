@@ -1,62 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>principal</title>
+	<title>Main Page</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="estilos-progreso.css">
+	<link rel="stylesheet" type="text/css" href="estilos-main.css">
+	
+	
 </head>
-<body>
-	<nav class="navbar navbar-default" id="navi">
+
+<body onload="LoadValue()">
+ 		<script type="text/javascript">
+ 			function LoadValue()
+{
+	var value =	localStorage.getItem("key");
+	document.getElementById('texto_actividad').innerHTML = value;
+}
+ 		</script>
+ 		<header class="container-fluid" id="header">
+ 			<h1> 
+ 				<center>Portal del Paciente</center>
+ 			</h1>
+
+ 			
+ 		</header>
+ 		<nav class="navbar navbar-default" id="navi">
  			<div class = "container-fluid">
  				<div class="navbar-header col-md-5 col-md-offset-6 ">
  					<div>
- 						<a href="main.html" class="navbar-brand">Aprendiendo a hablar</a>
+ 						<a href="main.html" class="navbar-brand">Actividad</a>
  					</div>
+
  					<div  id="navbar-1" class="navbar-right">
  						<ul class="nav navbar-nav">
- 							<li> <a href="progreso.html">Progreso</a></li>
- 							<li> <a href="">item2</a></li>
- 						 <li class="dropdown"> 
- 						 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
- 						  <ul class="dropdown-menu"> 
- 						  <li><a href="#">Action</a></li> <li>
- 						  <a href="#">Another action</a></li>
- 						   <li><a href="#">Something else here</a></li>
- 						    <li role="separator" class="divider"></li> 
- 						    <li><a href="#">Separated link</a></li> 
- 						    <li role="separator" class="divider"></li> 
- 						    <li><a href="#">One more separated link</a></li> </ul> </li>
+ 							<li> <a href="progreso.html" class="navbar-brand">Progreso</a></li>
+ 						</ul> 
+ 						    </li>
 
  						</ul>
  						
 
- 					 				</div>
- 			</div>
- 			<div class="navbar-right"><form action="" class="navbar-form navbar-left" role="search">
- 							<div class="form-group">
- 								<input type="text" class="form-control" placeholder="Buscar" name="">
- 							</div>
- 						</form>
-						<ul class="nav navbar-nav" id="log-out"><li><a href="#"> log out</a></li></ul>
- 						</div>
+	 				</div>
+ 				</div>
+	 			<div class="navbar-right">
+					<ul class="nav navbar-nav" id="log-out"><li><a href="#"> log out</a></li></ul>
+	 			</div>
  						
 
- 					</div>
+ 			</div>
  		</nav>
+ 		
+ 		<div class="container">
+ 			<div class="row"><!--Este div es la Actividad y la guia-->
+	 			<div class="col-xs-12 col-sm-8 col-md-9" id="log-out"><!--Este div es para la ACTIVIDAD-->
+	 				<div><!--Enunciado de la actividad-->
+		 				<h1 id = "texto_actividad">
+			 				Actividad X
+			 			</h1>
+		 				<p id = "texto_actividad">
+		 					Aquí tiene que ir una descripción general de la actividad con su nombre.
+		 				</p>
+	 				</div>
 
- 		<div class="container" id = "containerUno">
- 			<h1 id = "tituloDinamico"></h1>
- 			<div class="container">
- 				
+	 				<div><!--Cuadro donde se realiza la actividad-->
+	 					<div class="container-fluid">
+					 	<img id="Imagen1" src="Images/perro-cachorro.jpg" style="width:100%;"/>
+					 	<div class="col-md-5"><form class="form-inline"><div class="form-group"><label for="actividad">Respuesta:  </label><input class="form-control" id =actividad type="actividad" name="actividad"></div></form></div>
+					 	<button class="btn btn-primary" id ="submit" type = "submit">
+					 		Ingresar
+					 	</button>
+	 					</div>
+	 				</div>
+	 			</div>
+	 			<div class="col-xs-12 col-sm-4 col-md-3" id = "guide"><!--Este div es para la GUIA-->
+	 				<center>
+	 				<h2 id="tituloGuia">Guía de actividad</h2>
+	 				<div class = "col-xs- col-md-offset-19" id="guide">
+		 			<p id="parrafo-actividad">
+		 			Aquí iria la descripción de la actividad como tal. 
+		 			</p>
+		 			<button class="btn btn-primary" id ="hide" type = "submit" onclick="on_cliked_button()" value="Esconder">
+		 				Esconder
+		 			</button>
+	 				</div>
+	 				</center>
+	 			</div>
+
+	 			<div class="clearfix visible-sm-block"></div>
+
  			</div>
  		</div>
-<footer ><div class= "footer navbar-fixed-bottom" id="footer">register trademark ...</div>  </footer>
+
+ 	<div class="clearfix">
+ 		<p>
+ 		</p>
+ 	</div>
 
 
+<footer id ="fot">
+<div class= "footer navbar-fixed-bottom" id="footer">
+register trademark ...
+</div>  
+</footer>
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src = "js/bootstrap.min.js"></script>
+<script type="text/javascript" src = "sliding.js"></script>
+
+
 </body>
 </html>
